@@ -7,6 +7,7 @@ import {
   seekVideoForward,
   seekVideoBackward,
 } from "../../store/modules/video";
+import PlayButton from "../common/PlayButton";
 
 const StyledContainer = styled.div<{ isVisible: boolean }>`
   position: absolute;
@@ -67,11 +68,13 @@ const VideoControlPanel = () => {
   };
 
   return (
-    <StyledContainer
-      isVisible={isVisible}
-      ref={containerRef}
-      onClick={onPress}
-    />
+    <StyledContainer isVisible={isVisible} ref={containerRef} onClick={onPress}>
+      {isVisible && (
+        <React.Fragment>
+          <PlayButton />
+        </React.Fragment>
+      )}
+    </StyledContainer>
   );
 };
 
