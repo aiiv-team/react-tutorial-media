@@ -2,7 +2,12 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { RootState } from "../../types/store";
-import { loadStart, load, updatePlayStatus } from "../../store/modules/video";
+import {
+  loadStart,
+  load,
+  updatePlayStatus,
+  resetVideo,
+} from "../../store/modules/video";
 
 const DEMO_VIDEO_SOURCE =
   "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4";
@@ -27,6 +32,9 @@ const VideoPlayer = () => {
       dispatch(load(videoRef.current));
     }
   };
+  const onEnded = () => {
+    dispatch(resetVideo());
+  };
 
   React.useEffect(() => {
     function onStatusUpdate() {
@@ -45,6 +53,7 @@ const VideoPlayer = () => {
       ref={videoRef}
       onLoadStart={onLoadStart}
       onLoadedData={onLoad}
+      onEnded={onEnded}
     />
   );
 };
