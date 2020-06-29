@@ -24,7 +24,7 @@ const initialState: VideoState = {
   position: 0,
 };
 
-const setUri = (uri: string) => ({ type: SET_URI, uri });
+export const setUri = (uri: string) => ({ type: SET_URI, uri });
 export const loadStart = () => ({ type: LOAD_START });
 export const load = (videoRef: HTMLVideoElement) => ({ type: LOAD, videoRef });
 export const toggleControlPanel = () => ({
@@ -271,6 +271,9 @@ const videoReducer = (
 ): VideoState => {
   switch (action.type) {
     case SET_URI:
+      if (state.uri) {
+        URL.revokeObjectURL(state.uri);
+      }
       return { ...state, uri: action.uri };
     case LOAD_START:
       return { ...state, playState: VideoPlayState.Pending };
