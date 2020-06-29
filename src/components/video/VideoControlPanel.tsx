@@ -8,6 +8,7 @@ import {
   seekVideoBackward,
 } from "../../store/modules/video";
 import PlayButton from "../common/PlayButton";
+import ProgressBar from "../common/ProgressBar";
 
 const StyledContainer = styled.div<{ isVisible: boolean }>`
   position: absolute;
@@ -72,6 +73,7 @@ const VideoControlPanel = () => {
       {isVisible && (
         <React.Fragment>
           <PlayButton />
+          <ProgressBar />
         </React.Fragment>
       )}
     </StyledContainer>
