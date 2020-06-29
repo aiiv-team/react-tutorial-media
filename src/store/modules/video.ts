@@ -161,7 +161,6 @@ export const seekVideo = (
     //   ifLoadingTakesTimeHandler,
     //   SHOW_SPINNER_TIMEOUT
     // );
-
     videoRef.currentTime = duration * clamppedProgress;
     // clearTimeout(spinnerTimeout);
     // dispatch(setPlayState(playState));

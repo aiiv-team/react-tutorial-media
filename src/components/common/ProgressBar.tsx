@@ -23,6 +23,7 @@ const Text = styled.span`
   color: #ffffff;
   margin: 0 0 8px 0;
   font-size: 12px;
+  font-family: Roboto Arial sans-serif;
 `;
 
 const Bar = styled.div`
@@ -95,17 +96,20 @@ const ProgressBar = () => {
       return;
     }
     const { clientWidth: containerWidth } = containerRef.current;
-    const { pageX } = event;
+    const { pageX, pageY } = event;
+    const eventX = window.innerWidth > window.innerHeight ? pageX : pageY;
     if (
-      pageX < 0.5 * PROGRESS_CONTAINER_HORIZONTAL_PADDING ||
-      pageX > containerWidth - 0.5 * PROGRESS_CONTAINER_HORIZONTAL_PADDING
+      eventX < 0.5 * PROGRESS_CONTAINER_HORIZONTAL_PADDING ||
+      eventX > containerWidth - 0.5 * PROGRESS_CONTAINER_HORIZONTAL_PADDING
     ) {
       return;
     }
     const progress =
-      (pageX - 0.5 * PROGRESS_CONTAINER_HORIZONTAL_PADDING) /
+      (eventX - 0.5 * PROGRESS_CONTAINER_HORIZONTAL_PADDING) /
       (containerWidth - 0.5 * PROGRESS_CONTAINER_HORIZONTAL_PADDING);
     dispatch(seekVideo(progress));
+
+    event.stopPropagation();
   };
 
   return (

@@ -9,6 +9,7 @@ import {
 } from "../../store/modules/video";
 import PlayButton from "../common/PlayButton";
 import ProgressBar from "../common/ProgressBar";
+import TopMenu from "../common/TopMenu";
 
 const StyledContainer = styled.div<{ isVisible: boolean }>`
   position: absolute;
@@ -72,6 +73,7 @@ const VideoControlPanel = () => {
     <StyledContainer isVisible={isVisible} ref={containerRef} onClick={onPress}>
       {isVisible && (
         <React.Fragment>
+          <TopMenu />
           <PlayButton />
           <ProgressBar />
         </React.Fragment>
