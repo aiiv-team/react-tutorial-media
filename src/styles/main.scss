@@ -1,0 +1,26 @@
+@page {
+  size: landscape;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+@media only screen and (orientation: portrait) {
+  #root {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100vh;
+    height: 100vw;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    transform-origin: left top;
+
+    display: flex;
+  }
+}

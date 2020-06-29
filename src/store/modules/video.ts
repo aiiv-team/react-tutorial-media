@@ -77,7 +77,7 @@ export const USE_LONG_INTERVAL_THRESHOLD = 60000; // ms
 const JUMP_INTERVAL_LONG = 10000; // ms
 const JUMP_INTERVAL_SHORT = 5000; // ms
 const SHOW_SEEKING_ICON_INTERVAL = 500; // ms
-let timeout: NodeJS.Timeout | undefined;
+let timeout: number | undefined;
 let timeoutHandler: () => void;
 
 export const clearControlPanelTimeout = () => {
